@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Solutions from './components/Solutions';
-import Showcase from './components/Showcase';
-import WhyUs from './components/WhyUs';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Admin from './pages/Admin';
-import CustomCursor from './components/CustomCursor';
 import LoadingScreen from './components/LoadingScreen';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollIndicator from './components/ScrollIndicator';
 import BackToTop from './components/BackToTop';
+
+const About = lazy(() => import('./components/About'));
+const Solutions = lazy(() => import('./components/Solutions'));
+const Showcase = lazy(() => import('./components/Showcase'));
+const WhyUs = lazy(() => import('./components/WhyUs'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+const Admin = lazy(() => import('./pages/Admin'));
+const CustomCursor = lazy(() => import('./components/CustomCursor'));
 
 function MainSite() {
   const [isLoading, setIsLoading] = useState(true);
