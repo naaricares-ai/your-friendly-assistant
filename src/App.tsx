@@ -95,7 +95,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainSite />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={<Suspense fallback={null}><Admin /></Suspense>} />
       </Routes>
     </BrowserRouter>
   );
