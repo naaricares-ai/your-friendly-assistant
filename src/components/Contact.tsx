@@ -11,6 +11,7 @@ export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,10 +19,36 @@ export default function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const ADMIN_WHATSAPP = '918446692426';
+  const ADMIN_EMAIL = 'nprathamesh519@gmail.com';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setIsSubmitting(true);
+
+    try {
+      // Store in Supabase
+      await supabase.from('contact_submissions').insert({
+        name: formData.name,
+        email: formData.email,
+        school: formData.school,
+        message: formData.message,
+      });
+
+      // Open WhatsApp with pre-filled message
+      const whatsappMsg = encodeURIComponent(
+        `Hi, I'm ${formData.name} from ${formData.school}.\n\nEmail: ${formData.email}\n\nMessage: ${formData.message}`
+      );
+      window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${whatsappMsg}`, '_blank');
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', school: '', message: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      console.error('Submission error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
