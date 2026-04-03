@@ -1,5 +1,5 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Brain, Bot, Cog, Monitor, ArrowUpRight } from 'lucide-react';
 import { useStore } from '../lib/store';
 import type { LucideIcon } from 'lucide-react';
