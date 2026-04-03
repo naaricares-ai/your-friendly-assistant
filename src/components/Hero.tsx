@@ -64,30 +64,36 @@ export default function Hero() {
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Video Background */}
-      <VideoBackground 
-        src="/videos/hero-bg.mp4" 
-        fallbackImage="/images/luxury-bg.jpg"
-      />
+      <Suspense fallback={null}>
+        {/* Video Background */}
+        <VideoBackground 
+          src="/videos/hero-bg.mp4" 
+          fallbackImage="/images/luxury-bg.jpg"
+        />
+      </Suspense>
       
       {/* Deep Background */}
       <div className="absolute inset-0 bg-deep-space/40" />
       
-      {/* Glowing Orbs */}
-      <GlowingOrb color="#00D4FF" size={600} className="top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2" />
-      <GlowingOrb color="#7B61FF" size={500} className="bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2" animate />
-      <GlowingOrb color="#FF00FF" size={400} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      <Suspense fallback={null}>
+        {/* Glowing Orbs */}
+        <GlowingOrb color="#00D4FF" size={600} className="top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2" />
+        <GlowingOrb color="#7B61FF" size={500} className="bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2" animate />
+        <GlowingOrb color="#FF00FF" size={400} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+      </Suspense>
       
       {/* Luxury Grid */}
       <div className="absolute inset-0 luxury-grid opacity-20" />
       
-      {/* Floating Elements */}
-      <FloatingElements count={30} />
-      
-      {/* Particle Field */}
-      <div className="absolute inset-0 opacity-30">
-        <ParticleField />
-      </div>
+      <Suspense fallback={null}>
+        {/* Floating Elements */}
+        <FloatingElements count={30} />
+        
+        {/* Particle Field */}
+        <div className="absolute inset-0 opacity-30">
+          <ParticleField />
+        </div>
+      </Suspense>
       
       {/* Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(5,5,7,0.8)_100%)]" />
