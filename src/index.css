@@ -16,60 +16,12 @@
   --color-glass-border: rgba(255, 255, 255, 0.06);
 }
 
-/* Premium Typography - Clash Display for Headlines */
-@font-face {
-  font-family: 'Clash Display';
-  src: url('https://fonts.cdnfonts.com/s/74475/ClashDisplay-Variable.woff2') format('woff2');
-  font-weight: 200 700;
-  font-display: swap;
-}
+/* Premium Typography - Using Google Fonts for reliability */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Bebas+Neue&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
-/* Satoshi for Body Text */
-@font-face {
-  font-family: 'Satoshi';
-  src: url('https://fonts.cdnfonts.com/s/85546/Satoshi-Variable.woff2') format('woff2');
-  font-weight: 300 900;
-  font-display: swap;
-}
-
-/* JetBrains Mono for Technical/Code */
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2') format('woff2');
-  font-weight: 400 700;
-  font-display: swap;
-}
-
-/* Bebas Neue for Impact Headlines */
-@font-face {
-  font-family: 'Bebas Neue';
-  src: url('https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXoo9Wlhyw.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-
-/* Playfair Display for Elegant Accents */
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('https://fonts.gstatic.com/s/playfairdisplay/v37/nuFvD-vYSZviVYUb_rj3ij__anPXJzDwcbmjWBN2PKdFvUDQZNLo_U2r.woff2') format('woff2');
-  font-weight: 400 900;
-  font-display: swap;
-}
-
-/* Monument Extended for Ultra Bold */
-@font-face {
-  font-family: 'Monument Extended';
-  src: url('https://fonts.cdnfonts.com/s/52628/MonumentExtended-Regular.woff') format('woff');
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Monument Extended';
-  src: url('https://fonts.cdnfonts.com/s/52628/MonumentExtended-Ultrabold.woff') format('woff');
-  font-weight: 800;
-  font-display: swap;
-}
+/* Clash Display → Space Grotesk (similar geometric sans) */
+/* Satoshi → Inter (similar modern sans) */
+/* Monument Extended → Bebas Neue (impact headlines) */
 
 html {
   scroll-behavior: smooth;
