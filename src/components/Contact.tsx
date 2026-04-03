@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { MapPin, Mail, Phone, CheckCircle, ArrowRight, Loader2 as _Loader2 } from 'lucide-react';
+import { MapPin, Mail, Phone, CheckCircle, ArrowRight } from 'lucide-react';
 import { useStore } from '../lib/store';
 import { supabase } from '@/integrations/supabase/client';
 
