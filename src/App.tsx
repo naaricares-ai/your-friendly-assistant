@@ -19,17 +19,17 @@ const CustomCursor = lazy(() => import('./components/CustomCursor'));
 
 function MainSite() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isTouchDevice] = useState(() => 
+    typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  );
 
   useEffect(() => {
-    // Smooth scroll behavior for anchor links
     const handleClick = (e: Event) => {
       const target = e.currentTarget as HTMLAnchorElement;
       const href = target.getAttribute('href');
       if (href?.startsWith('#')) {
         e.preventDefault();
-        document.querySelector(href)?.scrollIntoView({
-          behavior: 'smooth'
-        });
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
       }
     };
 
@@ -46,22 +46,18 @@ function MainSite() {
 
   return (
     <>
-      {/* Loading Screen */}
       <LoadingScreen onComplete={() => setIsLoading(false)} />
       
-      {/* Custom Cursor */}
-      <Suspense fallback={null}>
-        <CustomCursor />
-      </Suspense>
+      {/* Custom Cursor - desktop only */}
+      {!isTouchDevice && (
+        <Suspense fallback={null}>
+          <CustomCursor />
+        </Suspense>
+      )}
       
       {!isLoading && (
         <SmoothScroll>
           <div className="min-h-screen bg-deep-space text-chrome-silver overflow-x-hidden">
-            {/* Noise overlay for cinematic texture */}
-            <div className="fixed inset-0 pointer-events-none z-50 opacity-[0.012]" style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-            }} />
-            
             <Navbar />
             <main>
               <Hero />
@@ -77,11 +73,7 @@ function MainSite() {
             <Suspense fallback={null}>
               <Footer />
             </Suspense>
-            
-            {/* Scroll Indicator */}
             <ScrollIndicator />
-            
-            {/* Back to Top */}
             <BackToTop />
           </div>
         </SmoothScroll>
