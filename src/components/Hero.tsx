@@ -1,14 +1,15 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
-import { useRef } from 'react';
-import ParticleField from './ParticleField';
-import AIBrain from './AIBrain';
+import { useRef, lazy, Suspense } from 'react';
 import { useStore } from '../lib/store';
-import VideoBackground from './VideoBackground';
-import FloatingElements from './FloatingElements';
 import MagneticButton from './MagneticButton';
-import GlowingOrb from './GlowingOrb';
 import Marquee from './Marquee';
+
+const ParticleField = lazy(() => import('./ParticleField'));
+const AIBrain = lazy(() => import('./AIBrain'));
+const VideoBackground = lazy(() => import('./VideoBackground'));
+const FloatingElements = lazy(() => import('./FloatingElements'));
+const GlowingOrb = lazy(() => import('./GlowingOrb'));
 
 export default function Hero() {
   const { data } = useStore();
