@@ -14,12 +14,12 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           setTimeout(() => {
             setPhase('complete');
             onComplete();
-          }, 1000);
+          }, 600);
           return 100;
         }
-        return prev + Math.random() * 15;
+        return prev + Math.random() * 25;
       });
-    }, 100);
+    }, 80);
 
     return () => clearInterval(interval);
   }, [onComplete]);
