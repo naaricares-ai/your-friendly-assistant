@@ -50,7 +50,9 @@ function MainSite() {
       <LoadingScreen onComplete={() => setIsLoading(false)} />
       
       {/* Custom Cursor */}
-      <CustomCursor />
+      <Suspense fallback={null}>
+        <CustomCursor />
+      </Suspense>
       
       {!isLoading && (
         <SmoothScroll>
