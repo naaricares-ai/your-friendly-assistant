@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { MapPin, Mail, Phone, CheckCircle, ArrowRight } from 'lucide-react';
 import { useStore } from '../lib/store';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function Contact() {
   const { data } = useStore();
@@ -10,6 +11,7 @@ export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,10 +19,36 @@ export default function Contact() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const ADMIN_WHATSAPP = '918446692426';
+  // Admin email for future email notifications: nprathamesh519@gmail.com
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    setIsSubmitting(true);
+
+    try {
+      // Store in Supabase
+      await supabase.from('contact_submissions').insert({
+        name: formData.name,
+        email: formData.email,
+        school: formData.school,
+        message: formData.message,
+      });
+
+      // Open WhatsApp with pre-filled message
+      const whatsappMsg = encodeURIComponent(
+        `Hi, I'm ${formData.name} from ${formData.school}.\n\nEmail: ${formData.email}\n\nMessage: ${formData.message}`
+      );
+      window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${whatsappMsg}`, '_blank');
+
+      setSubmitted(true);
+      setFormData({ name: '', email: '', school: '', message: '' });
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err) {
+      console.error('Submission error:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -184,10 +212,13 @@ export default function Contact() {
                 
                 <button
                   type="submit"
-                  className="w-full btn-premium py-5 rounded-xl text-white flex items-center justify-center gap-3 group"
+                  disabled={isSubmitting}
+                  className="w-full btn-premium py-5 rounded-xl text-white flex items-center justify-center gap-3 group disabled:opacity-50"
                 >
-                  <span className="relative z-10 font-body font-medium">Send Message</span>
-                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10 font-body font-medium">
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </span>
+                  {!isSubmitting && <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />}
                 </button>
               </form>
             </div>
