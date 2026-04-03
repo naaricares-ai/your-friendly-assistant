@@ -40,12 +40,12 @@ body {
 
 /* Typography Classes */
 .font-display {
-  font-family: 'Clash Display', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   letter-spacing: -0.03em;
 }
 
 .font-headline {
-  font-family: 'Monument Extended', 'Clash Display', sans-serif;
+  font-family: 'Bebas Neue', 'Space Grotesk', sans-serif;
   letter-spacing: -0.04em;
   text-transform: uppercase;
 }
@@ -68,20 +68,20 @@ body {
 }
 
 .font-body {
-  font-family: 'Satoshi', sans-serif;
+  font-family: 'Inter', sans-serif;
   letter-spacing: -0.01em;
 }
 
 /* Premium Text Styles */
 .text-hero {
-  font-family: 'Clash Display', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 0.95;
 }
 
 .text-hero-alt {
-  font-family: 'Monument Extended', sans-serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 0.9;
@@ -89,7 +89,7 @@ body {
 }
 
 .text-section {
-  font-family: 'Clash Display', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -260,7 +260,7 @@ a, button, [data-cursor] {
   border: 1px solid rgba(0, 212, 255, 0.3);
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  font-family: 'Satoshi', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -313,7 +313,7 @@ a, button, [data-cursor] {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  font-family: 'Satoshi', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   letter-spacing: 0.02em;
 }
@@ -420,7 +420,7 @@ a, button, [data-cursor] {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  font-family: 'Satoshi', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .input-premium:focus {
