@@ -20,7 +20,7 @@ export default function Contact() {
   });
 
   const ADMIN_WHATSAPP = '918446692426';
-  const _ADMIN_EMAIL = 'nprathamesh519@gmail.com';
+  // Admin email for future email notifications: nprathamesh519@gmail.com
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
