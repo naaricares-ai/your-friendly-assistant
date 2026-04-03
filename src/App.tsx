@@ -65,14 +65,18 @@ function MainSite() {
             <Navbar />
             <main>
               <Hero />
-              <About />
-              <Solutions />
-              <Showcase />
-              <WhyUs />
-              <Testimonials />
-              <Contact />
+              <Suspense fallback={null}>
+                <About />
+                <Solutions />
+                <Showcase />
+                <WhyUs />
+                <Testimonials />
+                <Contact />
+              </Suspense>
             </main>
-            <Footer />
+            <Suspense fallback={null}>
+              <Footer />
+            </Suspense>
             
             {/* Scroll Indicator */}
             <ScrollIndicator />
