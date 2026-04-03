@@ -212,10 +212,13 @@ export default function Contact() {
                 
                 <button
                   type="submit"
-                  className="w-full btn-premium py-5 rounded-xl text-white flex items-center justify-center gap-3 group"
+                  disabled={isSubmitting}
+                  className="w-full btn-premium py-5 rounded-xl text-white flex items-center justify-center gap-3 group disabled:opacity-50"
                 >
-                  <span className="relative z-10 font-body font-medium">Send Message</span>
-                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10 font-body font-medium">
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </span>
+                  {!isSubmitting && <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />}
                 </button>
               </form>
             </div>
