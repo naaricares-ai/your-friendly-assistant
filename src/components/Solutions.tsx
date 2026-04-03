@@ -12,7 +12,7 @@ export default function Solutions() {
   
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [, setHoveredIndex] = useState<number | null>(null);
+  
 
   return (
     <section id="solutions" className="relative py-20 md:py-40 overflow-hidden">
