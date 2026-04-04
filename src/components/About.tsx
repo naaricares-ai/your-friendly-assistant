@@ -80,7 +80,7 @@ export default function About() {
                   <h3 className="text-section text-lg md:text-2xl text-white mb-3 md:mb-4 group-hover:text-electric-blue transition-colors duration-500">
                     {value.title}
                   </h3>
-                  <p className="font-body text-sm md:text-base text-titanium leading-relaxed">
+                  <p className="font-body text-sm md:text-base text-titanium/90 leading-relaxed">
                     {value.description}
                   </p>
                 </div>
