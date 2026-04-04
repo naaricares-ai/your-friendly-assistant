@@ -77,14 +77,14 @@ body {
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 600;
   letter-spacing: -0.04em;
-  line-height: 0.95;
+  line-height: 1.05;
 }
 
 .text-hero-alt {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 0.9;
+  line-height: 1;
   text-transform: uppercase;
 }
 
