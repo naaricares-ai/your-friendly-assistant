@@ -84,8 +84,8 @@ export default function Contact() {
                       <item.icon className="w-4 h-4 md:w-5 md:h-5 text-electric-blue" />
                     </div>
                     <div>
-                      <div className="text-label text-titanium/50 mb-1">{item.label}</div>
-                      <div className="font-body text-sm md:text-base text-white whitespace-pre-line">{item.value}</div>
+                      <div className="text-label text-titanium/60 mb-1">{item.label}</div>
+                      <div className="font-body text-sm md:text-base text-chrome-silver whitespace-pre-line">{item.value}</div>
                     </div>
                   </div>
                 ))}
@@ -100,7 +100,7 @@ export default function Contact() {
                 ].map((stat, i) => (
                   <div key={i} className="text-center">
                     <div className="text-number text-xl md:text-2xl gradient-text-clean">{stat.value}</div>
-                    <div className="text-label text-[9px] md:text-[10px] text-titanium/50">{stat.label}</div>
+                    <div className="text-label text-[10px] md:text-xs text-titanium/60">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -132,13 +132,13 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
                   <div>
-                    <label className="text-label text-titanium/70 mb-2 md:mb-3 block">Name</label>
+                    <label className="text-label text-titanium/80 mb-2 md:mb-3 block">Name</label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required
                       className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30"
                       placeholder="John Smith" />
                   </div>
                   <div>
-                    <label className="text-label text-titanium/70 mb-2 md:mb-3 block">Email</label>
+                    <label className="text-label text-titanium/80 mb-2 md:mb-3 block">Email</label>
                     <input type="email" name="email" value={formData.email} onChange={handleChange} required
                       className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30"
                       placeholder="john@school.edu" />
@@ -146,14 +146,14 @@ export default function Contact() {
                 </div>
                 
                 <div>
-                  <label className="text-label text-titanium/70 mb-2 md:mb-3 block">Institution</label>
+                  <label className="text-label text-titanium/80 mb-2 md:mb-3 block">Institution</label>
                   <input type="text" name="school" value={formData.school} onChange={handleChange} required
                     className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30"
                     placeholder="Your school or organization" />
                 </div>
                 
                 <div>
-                  <label className="text-label text-titanium/70 mb-2 md:mb-3 block">Message</label>
+                  <label className="text-label text-titanium/80 mb-2 md:mb-3 block">Message</label>
                   <textarea name="message" value={formData.message} onChange={handleChange} required rows={4}
                     className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30 resize-none"
                     placeholder="Tell us about your needs..." />

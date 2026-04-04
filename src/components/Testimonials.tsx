@@ -103,10 +103,10 @@ export default function Testimonials() {
           transition={{ delay: 0.6, duration: 0.8 }}
           className="mt-12 md:mt-20 text-center"
         >
-          <p className="text-label text-titanium/50 mb-6 md:mb-8">Trusted by 500+ Schools Worldwide</p>
+          <p className="text-label text-titanium/60 mb-6 md:mb-8">Trusted by 500+ Schools Worldwide</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {partnerSchools.map((school, i) => (
-              <span key={i} className="text-section text-sm md:text-lg text-titanium/30">{school}</span>
+              <span key={i} className="text-section text-sm md:text-lg text-titanium/40">{school}</span>
             ))}
           </div>
         </motion.div>

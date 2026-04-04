@@ -73,7 +73,7 @@ export default function Solutions() {
                       <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-electric-blue opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     
-                    <p className="font-body text-sm md:text-base text-titanium leading-relaxed mb-6 md:mb-8">
+                    <p className="font-body text-sm md:text-base text-titanium/90 leading-relaxed mb-6 md:mb-8">
                       {solution.description}
                     </p>
                     
@@ -81,7 +81,7 @@ export default function Solutions() {
                       {solution.features.map((feature, i) => (
                         <span 
                           key={i}
-                          className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-label text-[9px] md:text-[10px] bg-white/5 text-titanium border border-white/5"
+                          className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-label text-[10px] md:text-xs bg-white/5 text-titanium/80 border border-white/5"
                         >
                           {feature}
                         </span>

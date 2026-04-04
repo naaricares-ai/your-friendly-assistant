@@ -191,7 +191,7 @@ export default function Hero() {
                 <div className="text-number text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1">
                   {stat.value}
                 </div>
-                <div className="text-label text-[9px] sm:text-[10px] md:text-xs text-titanium">
+                <div className="text-label text-[10px] sm:text-xs text-titanium/80">
                   {stat.label}
                 </div>
               </div>

@@ -56,7 +56,7 @@ export default function About() {
             <p className="font-body text-base md:text-xl text-titanium leading-relaxed mb-6 md:mb-8">
               {about.description1}
             </p>
-            <p className="font-body text-sm md:text-lg text-titanium/70 leading-relaxed">
+            <p className="font-body text-sm md:text-lg text-titanium/80 leading-relaxed">
               {about.description2}
             </p>
           </motion.div>
@@ -80,7 +80,7 @@ export default function About() {
                   <h3 className="text-section text-lg md:text-2xl text-white mb-3 md:mb-4 group-hover:text-electric-blue transition-colors duration-500">
                     {value.title}
                   </h3>
-                  <p className="font-body text-sm md:text-base text-titanium leading-relaxed">
+                  <p className="font-body text-sm md:text-base text-titanium/90 leading-relaxed">
                     {value.description}
                   </p>
                 </div>
@@ -106,7 +106,7 @@ export default function About() {
                   <div className="text-number text-3xl sm:text-4xl md:text-5xl lg:text-6xl gradient-text-clean mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-label text-[9px] sm:text-[10px] text-titanium">
+                  <div className="text-label text-[10px] sm:text-xs text-titanium/70">
                     {stat.label}
                   </div>
                 </div>
