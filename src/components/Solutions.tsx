@@ -73,7 +73,7 @@ export default function Solutions() {
                       <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-electric-blue opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
                     
-                    <p className="font-body text-sm md:text-base text-titanium leading-relaxed mb-6 md:mb-8">
+                    <p className="font-body text-sm md:text-base text-titanium/90 leading-relaxed mb-6 md:mb-8">
                       {solution.description}
                     </p>
                     
