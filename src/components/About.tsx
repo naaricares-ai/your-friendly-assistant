@@ -56,7 +56,7 @@ export default function About() {
             <p className="font-body text-base md:text-xl text-titanium leading-relaxed mb-6 md:mb-8">
               {about.description1}
             </p>
-            <p className="font-body text-sm md:text-lg text-titanium/70 leading-relaxed">
+            <p className="font-body text-sm md:text-lg text-titanium/80 leading-relaxed">
               {about.description2}
             </p>
           </motion.div>
