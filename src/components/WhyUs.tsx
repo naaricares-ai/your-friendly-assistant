@@ -52,7 +52,7 @@ export default function WhyUs() {
                   </div>
                   <div className="text-right">
                     <div className="text-number text-2xl md:text-3xl gradient-text-clean">{reason.stat}</div>
-                    <div className="text-label text-[9px] md:text-[10px] text-titanium/50">{reason.statLabel}</div>
+                    <div className="text-label text-[10px] md:text-xs text-titanium/60">{reason.statLabel}</div>
                   </div>
                 </div>
                 
