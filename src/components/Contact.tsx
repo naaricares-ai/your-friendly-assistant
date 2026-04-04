@@ -138,7 +138,7 @@ export default function Contact() {
                       placeholder="John Smith" />
                   </div>
                   <div>
-                    <label className="text-label text-titanium/70 mb-2 md:mb-3 block">Email</label>
+                    <label className="text-label text-titanium/80 mb-2 md:mb-3 block">Email</label>
                     <input type="email" name="email" value={formData.email} onChange={handleChange} required
                       className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30"
                       placeholder="john@school.edu" />
