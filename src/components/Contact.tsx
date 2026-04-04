@@ -100,7 +100,7 @@ export default function Contact() {
                 ].map((stat, i) => (
                   <div key={i} className="text-center">
                     <div className="text-number text-xl md:text-2xl gradient-text-clean">{stat.value}</div>
-                    <div className="text-label text-[9px] md:text-[10px] text-titanium/50">{stat.label}</div>
+                    <div className="text-label text-[10px] md:text-xs text-titanium/60">{stat.label}</div>
                   </div>
                 ))}
               </div>
