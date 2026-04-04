@@ -146,7 +146,7 @@ export default function Contact() {
                 </div>
                 
                 <div>
-                  <label className="text-label text-titanium/70 mb-2 md:mb-3 block">Institution</label>
+                  <label className="text-label text-titanium/80 mb-2 md:mb-3 block">Institution</label>
                   <input type="text" name="school" value={formData.school} onChange={handleChange} required
                     className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30"
                     placeholder="Your school or organization" />
