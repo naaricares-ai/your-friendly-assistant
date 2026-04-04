@@ -205,7 +205,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.5 }}
-            className="relative h-[500px] lg:h-[700px] hidden md:block"
+            className="relative h-[500px] lg:h-[700px] hidden lg:block"
             data-cursor="drag"
           >
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-electric-blue/20 rounded-full blur-[100px]" />
