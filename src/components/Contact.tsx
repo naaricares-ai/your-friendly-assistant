@@ -84,8 +84,8 @@ export default function Contact() {
                       <item.icon className="w-4 h-4 md:w-5 md:h-5 text-electric-blue" />
                     </div>
                     <div>
-                      <div className="text-label text-titanium/50 mb-1">{item.label}</div>
-                      <div className="font-body text-sm md:text-base text-white whitespace-pre-line">{item.value}</div>
+                      <div className="text-label text-titanium/60 mb-1">{item.label}</div>
+                      <div className="font-body text-sm md:text-base text-chrome-silver whitespace-pre-line">{item.value}</div>
                     </div>
                   </div>
                 ))}
