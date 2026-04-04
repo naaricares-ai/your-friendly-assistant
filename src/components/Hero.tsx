@@ -138,7 +138,7 @@ export default function Hero() {
             <div className="text-hero text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white overflow-hidden">
               <AnimatedText text={hero.title2} delay={0.3} />
             </div>
-            <div className="text-hero-alt text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl gradient-text-premium overflow-hidden mt-1 md:mt-2">
+            <div className="text-hero-alt text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-8xl gradient-text-premium overflow-hidden mt-1 md:mt-2 whitespace-nowrap">
               <AnimatedText text={hero.title3} delay={0.6} />
             </div>
             <div className="text-elegant text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-electric-blue overflow-hidden mt-1">
