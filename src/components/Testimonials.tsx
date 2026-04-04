@@ -106,7 +106,7 @@ export default function Testimonials() {
           <p className="text-label text-titanium/60 mb-6 md:mb-8">Trusted by 500+ Schools Worldwide</p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-8">
             {partnerSchools.map((school, i) => (
-              <span key={i} className="text-section text-sm md:text-lg text-titanium/30">{school}</span>
+              <span key={i} className="text-section text-sm md:text-lg text-titanium/40">{school}</span>
             ))}
           </div>
         </motion.div>

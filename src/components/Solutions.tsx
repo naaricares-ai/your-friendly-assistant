@@ -81,7 +81,7 @@ export default function Solutions() {
                       {solution.features.map((feature, i) => (
                         <span 
                           key={i}
-                          className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-label text-[9px] md:text-[10px] bg-white/5 text-titanium border border-white/5"
+                          className="px-3 md:px-4 py-1.5 md:py-2 rounded-full text-label text-[10px] md:text-xs bg-white/5 text-titanium/80 border border-white/5"
                         >
                           {feature}
                         </span>

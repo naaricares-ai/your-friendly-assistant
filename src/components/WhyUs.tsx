@@ -59,7 +59,7 @@ export default function WhyUs() {
                 <h3 className="text-section text-base md:text-xl text-white mb-2 md:mb-3 group-hover:text-electric-blue transition-colors duration-500">
                   {reason.title}
                 </h3>
-                <p className="font-body text-xs md:text-sm text-titanium leading-relaxed">
+                <p className="font-body text-sm md:text-base text-titanium/90 leading-relaxed">
                   {reason.description}
                 </p>
                 

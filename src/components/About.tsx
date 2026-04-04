@@ -106,7 +106,7 @@ export default function About() {
                   <div className="text-number text-3xl sm:text-4xl md:text-5xl lg:text-6xl gradient-text-clean mb-2">
                     {stat.number}
                   </div>
-                  <div className="text-label text-[9px] sm:text-[10px] text-titanium">
+                  <div className="text-label text-[10px] sm:text-xs text-titanium/70">
                     {stat.label}
                   </div>
                 </div>
