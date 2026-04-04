@@ -132,7 +132,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
                   <div>
-                    <label className="text-label text-titanium/70 mb-2 md:mb-3 block">Name</label>
+                    <label className="text-label text-titanium/80 mb-2 md:mb-3 block">Name</label>
                     <input type="text" name="name" value={formData.name} onChange={handleChange} required
                       className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30"
                       placeholder="John Smith" />
