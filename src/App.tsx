@@ -61,7 +61,7 @@ function MainSite() {
             <Navbar />
             <main>
               <Hero />
-              <Suspense fallback={null}>
+              <Suspense fallback={<div className="min-h-screen" />}>
                 <About />
                 <Solutions />
                 <Showcase />
