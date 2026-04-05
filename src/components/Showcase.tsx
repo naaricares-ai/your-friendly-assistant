@@ -1,6 +1,5 @@
 import { useRef, useState, lazy, Suspense } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useIsMobile } from '../hooks/useIsMobile';
 
 const ShowcaseCanvas = lazy(() => import('./ShowcaseCanvas'));
 
@@ -29,7 +28,7 @@ export default function Showcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeIndex, setActiveIndex] = useState(0);
-  const isMobile = useIsMobile();
+  
 
   return (
     <section id="showcase" className="relative py-20 md:py-40 overflow-hidden">
@@ -63,22 +62,9 @@ export default function Showcase() {
               <div className="lg:col-span-3 relative bg-gradient-to-br from-deep-space to-obsidian min-h-[250px] md:min-h-0">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] md:w-[300px] h-[200px] md:h-[300px] bg-electric-blue/20 rounded-full blur-[80px] md:blur-[100px]" />
                 
-                {isMobile ? (
-                  <div className="flex items-center justify-center h-full">
-                    <motion.div
-                      key={activeIndex}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="text-8xl"
-                    >
-                      {showcaseItems[activeIndex].emoji}
-                    </motion.div>
-                  </div>
-                ) : (
-                  <Suspense fallback={<div className="flex items-center justify-center h-full"><div className="w-16 h-16 rounded-full border-2 border-electric-blue/30 border-t-electric-blue animate-spin" /></div>}>
-                    <ShowcaseCanvas activeIndex={activeIndex} />
-                  </Suspense>
-                )}
+                <Suspense fallback={<div className="flex items-center justify-center h-full"><div className="w-16 h-16 rounded-full border-2 border-electric-blue/30 border-t-electric-blue animate-spin" /></div>}>
+                  <ShowcaseCanvas activeIndex={activeIndex} />
+                </Suspense>
               </div>
               
               {/* Info Panel */}

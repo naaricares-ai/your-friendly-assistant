@@ -1,6 +1,7 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 function Particles({ count = 300 }) {
   const mesh = useRef<THREE.Points>(null);
@@ -64,10 +65,16 @@ function Particles({ count = 300 }) {
 }
 
 export default function ParticleField() {
+  const isMobile = useIsMobile();
+  
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [0, 0, 20], fov: 75 }}>
-        <Particles count={250} />
+      <Canvas
+        camera={{ position: [0, 0, 20], fov: 75 }}
+        dpr={isMobile ? [1, 1] : [1, 2]}
+        performance={{ min: 0.5 }}
+      >
+        <Particles count={isMobile ? 80 : 250} />
       </Canvas>
     </div>
   );
