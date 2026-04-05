@@ -5,6 +5,7 @@ import { useStore } from '../lib/store';
 import MagneticButton from './MagneticButton';
 import Marquee from './Marquee';
 import { useIsMobile } from '../hooks/useIsMobile';
+import Canvas3DErrorBoundary from './Canvas3DErrorBoundary';
 
 const ParticleField = lazy(() => import('./ParticleField'));
 const AIBrain = lazy(() => import('./AIBrain'));
