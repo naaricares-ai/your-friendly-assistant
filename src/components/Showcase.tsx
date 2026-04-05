@@ -1,6 +1,5 @@
 import { useRef, useState, lazy, Suspense } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useIsMobile } from '../hooks/useIsMobile';
 
 const ShowcaseCanvas = lazy(() => import('./ShowcaseCanvas'));
 
