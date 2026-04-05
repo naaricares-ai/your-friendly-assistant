@@ -78,29 +78,26 @@ export default function Hero() {
       {/* Deep Background */}
       <div className="absolute inset-0 bg-deep-space/40" />
       
-      {!isMobile && (
-        <Suspense fallback={null}>
-          <GlowingOrb color="#00D4FF" size={600} className="top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2" />
-          <GlowingOrb color="#7B61FF" size={500} className="bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2" animate />
-        </Suspense>
-      )}
-      
-      {/* Simple mobile glow */}
-      {isMobile && (
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-electric-blue/10 rounded-full blur-[80px]" />
-      )}
+      <Suspense fallback={null}>
+        {isMobile ? (
+          <GlowingOrb color="#00D4FF" size={300} className="top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        ) : (
+          <>
+            <GlowingOrb color="#00D4FF" size={600} className="top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2" />
+            <GlowingOrb color="#7B61FF" size={500} className="bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2" animate />
+          </>
+        )}
+      </Suspense>
       
       {/* Luxury Grid */}
       <div className="absolute inset-0 luxury-grid opacity-20" />
       
-      {!isMobile && (
-        <Suspense fallback={null}>
-          <FloatingElements count={15} />
-          <div className="absolute inset-0 opacity-30">
-            <ParticleField />
-          </div>
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        {!isMobile && <FloatingElements count={15} />}
+        <div className={`absolute inset-0 ${isMobile ? 'opacity-20' : 'opacity-30'}`}>
+          <ParticleField />
+        </div>
+      </Suspense>
       
       {/* Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(5,5,7,0.8)_100%)]" />
@@ -199,54 +196,56 @@ export default function Hero() {
           </motion.div>
         </div>
         
-        {/* Right - 3D AI Brain (desktop only) */}
-        {!isMobile && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-            className="relative h-[500px] lg:h-[700px] hidden lg:block"
-            data-cursor="drag"
-          >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-electric-blue/20 rounded-full blur-[100px]" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-neon-purple/20 rounded-full blur-[80px]" />
-            
-            <Suspense fallback={null}><AIBrain /></Suspense>
-            
-            {/* Floating UI Cards */}
-            <motion.div
-              animate={{ y: [0, -15, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute top-16 right-8 glass-card-premium p-4 rounded-2xl backdrop-blur-xl"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/30 to-neon-purple/30 flex items-center justify-center">
-                  <span className="text-lg">🤖</span>
+        {/* Right - 3D AI Brain */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+          className={`relative ${isMobile ? 'h-[280px] mt-4' : 'h-[500px] lg:h-[700px] hidden lg:block'}`}
+          data-cursor="drag"
+        >
+          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isMobile ? 'w-[200px] h-[200px]' : 'w-[400px] h-[400px]'} bg-electric-blue/20 rounded-full blur-[100px]`} />
+          {!isMobile && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-neon-purple/20 rounded-full blur-[80px]" />}
+          
+          <Suspense fallback={null}><AIBrain /></Suspense>
+          
+          {/* Floating UI Cards - desktop only */}
+          {!isMobile && (
+            <>
+              <motion.div
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute top-16 right-8 glass-card-premium p-4 rounded-2xl backdrop-blur-xl"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-electric-blue/30 to-neon-purple/30 flex items-center justify-center">
+                    <span className="text-lg">🤖</span>
+                  </div>
+                  <div>
+                    <div className="font-body text-sm font-medium text-white">AI Systems</div>
+                    <div className="text-label text-[10px] text-electric-blue">Online</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-body text-sm font-medium text-white">AI Systems</div>
-                  <div className="text-label text-[10px] text-electric-blue">Online</div>
+              </motion.div>
+              
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                className="absolute bottom-32 left-4 glass-card-premium p-4 rounded-2xl backdrop-blur-xl"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-aurora-green/30 to-electric-blue/30 flex items-center justify-center">
+                    <span className="text-lg">⚡</span>
+                  </div>
+                  <div>
+                    <div className="font-body text-sm font-medium text-white">Processing</div>
+                    <div className="text-label text-[10px] text-aurora-green">98.7% Efficiency</div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-            
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
-              className="absolute bottom-32 left-4 glass-card-premium p-4 rounded-2xl backdrop-blur-xl"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-aurora-green/30 to-electric-blue/30 flex items-center justify-center">
-                  <span className="text-lg">⚡</span>
-                </div>
-                <div>
-                  <div className="font-body text-sm font-medium text-white">Processing</div>
-                  <div className="text-label text-[10px] text-aurora-green">98.7% Efficiency</div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
+              </motion.div>
+            </>
+          )}
+        </motion.div>
       </motion.div>
       
       {/* Bottom Marquee */}
