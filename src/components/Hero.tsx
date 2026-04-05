@@ -95,9 +95,13 @@ export default function Hero() {
       
       <Suspense fallback={null}>
         {!isMobile && <FloatingElements count={15} />}
-        <div className={`absolute inset-0 ${isMobile ? 'opacity-20' : 'opacity-30'}`}>
-          <ParticleField />
-        </div>
+        {!isMobile && (
+          <div className="absolute inset-0 opacity-30">
+            <Canvas3DErrorBoundary>
+              <ParticleField />
+            </Canvas3DErrorBoundary>
+          </div>
+        )}
       </Suspense>
       
       {/* Vignette */}
@@ -208,7 +212,9 @@ export default function Hero() {
           <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${isMobile ? 'w-[200px] h-[200px]' : 'w-[400px] h-[400px]'} bg-electric-blue/20 rounded-full blur-[100px]`} />
           {!isMobile && <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-neon-purple/20 rounded-full blur-[80px]" />}
           
-          <Suspense fallback={null}><AIBrain /></Suspense>
+          <Canvas3DErrorBoundary>
+            <Suspense fallback={null}><AIBrain /></Suspense>
+          </Canvas3DErrorBoundary>
           
           {/* Floating UI Cards - desktop only */}
           {!isMobile && (
