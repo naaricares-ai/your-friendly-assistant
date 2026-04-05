@@ -29,7 +29,7 @@ export default function Showcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeIndex, setActiveIndex] = useState(0);
-  const isMobile = useIsMobile();
+  
 
   return (
     <section id="showcase" className="relative py-20 md:py-40 overflow-hidden">
