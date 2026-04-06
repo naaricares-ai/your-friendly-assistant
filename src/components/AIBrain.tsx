@@ -14,7 +14,7 @@ function NeuralCore({ lite = false }: { lite?: boolean }) {
     }
   });
 
-  const seg = lite ? 48 : 128;
+  const seg = lite ? 24 : 64;
 
   return (
     <Float speed={1.5} rotationIntensity={0.3} floatIntensity={0.5}>
@@ -130,7 +130,7 @@ function GlowRings({ lite = false }: { lite?: boolean }) {
     }
   });
 
-  const seg = lite ? 48 : 100;
+  const seg = lite ? 32 : 64;
 
   return (
     <>
@@ -144,7 +144,7 @@ function GlowRings({ lite = false }: { lite?: boolean }) {
       </mesh>
       {!lite && (
         <mesh ref={ring3Ref}>
-          <torusGeometry args={[3.5, 0.008, 16, 100]} />
+          <torusGeometry args={[3.5, 0.008, 8, 64]} />
           <meshStandardMaterial color="#FF00FF" emissive="#FF00FF" emissiveIntensity={2} transparent opacity={0.3} />
         </mesh>
       )}
@@ -170,7 +170,7 @@ export default function AIBrain() {
         <Environment preset="night" />
         
         <NeuralCore lite={lite} />
-        <OrbitingNodes count={lite ? 8 : 18} lite={lite} />
+        <OrbitingNodes count={lite ? 5 : 12} lite={lite} />
         <GlowRings lite={lite} />
       </Canvas>
     </div>

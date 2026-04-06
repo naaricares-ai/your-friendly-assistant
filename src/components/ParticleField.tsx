@@ -74,7 +74,7 @@ export default function ParticleField() {
         dpr={isMobile ? [1, 1] : [1, 2]}
         performance={{ min: 0.5 }}
       >
-        <Particles count={isMobile ? 80 : 250} />
+        <Particles count={isMobile ? 50 : 150} />
       </Canvas>
     </div>
   );

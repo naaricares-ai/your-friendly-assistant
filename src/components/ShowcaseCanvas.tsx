@@ -9,7 +9,7 @@ function RotatingRobot({ lite = false }: { lite?: boolean }) {
   useFrame((state) => {
     if (groupRef.current) groupRef.current.rotation.y = state.clock.elapsedTime * 0.2;
   });
-  const seg = lite ? 8 : 16;
+  const seg = lite ? 6 : 12;
   return (
     <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.3}>
       <group ref={groupRef}>
@@ -30,7 +30,7 @@ function NeuralSphere({ lite = false }: { lite?: boolean }) {
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.15;
     }
   });
-  const seg = lite ? 16 : 32;
+  const seg = lite ? 12 : 24;
   return (
     <Float speed={2} rotationIntensity={0.3} floatIntensity={0.5}>
       <mesh ref={meshRef}>
@@ -38,7 +38,7 @@ function NeuralSphere({ lite = false }: { lite?: boolean }) {
         <MeshDistortMaterial color="#00D4FF" distort={lite ? 0.15 : 0.3} speed={2} roughness={0.1} metalness={0.9} emissive="#7B61FF" emissiveIntensity={0.2} />
       </mesh>
       <mesh rotation={[Math.PI / 4, 0, 0]}>
-        <torusGeometry args={[2.2, 0.02, 8, lite ? 32 : 64]} />
+        <torusGeometry args={[2.2, 0.02, 6, lite ? 24 : 48]} />
         <meshStandardMaterial color="#00D4FF" emissive="#00D4FF" emissiveIntensity={2} transparent opacity={0.6} />
       </mesh>
     </Float>
