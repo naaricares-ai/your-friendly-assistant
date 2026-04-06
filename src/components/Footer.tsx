@@ -68,7 +68,7 @@ export default function Footer() {
               {socialLinks.map((social, i) => (
                 <a key={i} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}
                   className="w-9 h-9 md:w-10 md:h-10 rounded-lg md:rounded-xl border border-white/5 flex items-center justify-center text-titanium/50 hover:text-electric-blue hover:border-electric-blue/30 transition-all">
-                  {typeof social.icon === 'function' && social.icon.prototype ? <social.icon className="w-4 h-4 md:w-5 md:h-5" /> : <social.icon />}
+                  <social.icon />
                 </a>
               ))}
             </div>
