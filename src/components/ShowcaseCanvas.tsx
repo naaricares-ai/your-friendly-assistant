@@ -1,6 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, MeshDistortMaterial, Environment } from '@react-three/drei';
+import { Float, MeshDistortMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 import { useIsMobile } from '../hooks/useIsMobile';
 
@@ -88,7 +88,7 @@ export default function ShowcaseCanvas({ activeIndex }: { activeIndex: number })
       <ambientLight intensity={0.2} />
       <pointLight position={[10, 10, 10]} intensity={1} color="#00D4FF" />
       <pointLight position={[-10, -10, -10]} intensity={0.5} color="#7B61FF" />
-      <Environment preset="night" />
+      
       <ActiveComponent lite={isMobile} />
     </Canvas>
   );

@@ -1,6 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Sphere, MeshDistortMaterial, Float, Trail, Environment } from '@react-three/drei';
+import { Sphere, MeshDistortMaterial, Float, Trail } from '@react-three/drei';
 import * as THREE from 'three';
 import { useIsMobile } from '../hooks/useIsMobile';
 
@@ -167,7 +167,7 @@ export default function AIBrain() {
         <pointLight position={[10, 10, 10]} intensity={0.8} color="#00D4FF" />
         <pointLight position={[-10, -10, -10]} intensity={0.4} color="#7B61FF" />
         {!lite && <pointLight position={[0, 5, 0]} intensity={0.3} color="#FF00FF" />}
-        <Environment preset="night" />
+        
         
         <NeuralCore lite={lite} />
         <OrbitingNodes count={lite ? 5 : 12} lite={lite} />
