@@ -6,8 +6,8 @@
   --color-obsidian: #101014;
   --color-electric-blue: #00D4FF;
   --color-neon-purple: #7B61FF;
-  --color-chrome-silver: #E8E8ED;
-  --color-titanium: #A8A8BC;
+  --color-chrome-silver: #F0F0F5;
+  --color-titanium: #C0C0D0;
   --color-cyan-glow: #00FFFF;
   --color-magenta-glow: #FF00FF;
   --color-aurora-green: #00FF88;
@@ -75,7 +75,7 @@ body {
 /* Premium Text Styles */
 .text-hero {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.05;
 }
@@ -90,9 +90,9 @@ body {
 
 .text-section {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.03em;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
 .text-label {
