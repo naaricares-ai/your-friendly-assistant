@@ -3,6 +3,19 @@ import { useRef, useState } from 'react';
 import { MapPin, Mail, Phone, CheckCircle, ArrowRight } from 'lucide-react';
 import { useStore } from '../lib/store';
 import { supabase } from '@/integrations/supabase/client';
+import emailjs from '@emailjs/browser';
+
+// ─── EmailJS config ───────────────────────────────────────────────────────────
+// Replace these three values after you create your EmailJS account (see SETUP.md)
+const EMAILJS_SERVICE_ID  = 'service_1e75dzb';   // ← your Service ID 
+const EMAILJS_TEMPLATE_ID = 'template_fod4wd3';  // ← your Template ID 
+const EMAILJS_PUBLIC_KEY  = 'k-i8x2jThvXQTy7pe'; // ← your Public Key
+
+// ─── WhatsApp number (with country code, no + or spaces) ─────────────────────
+const ADMIN_WHATSAPP = '918446692426';
+
+// ─── Email that receives submissions ─────────────────────────────────────────
+const ADMIN_EMAIL = 'nprathamesh519@gmail.com';
 
 export default function Contact() {
   const { data } = useStore();
@@ -12,27 +25,52 @@ export default function Contact() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', school: '', message: '' });
-
-  const ADMIN_WHATSAPP = '918446692426';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
+
     try {
+      // 1️⃣  Save to Supabase
       await supabase.from('contact_submissions').insert({
-        name: formData.name, email: formData.email,
-        school: formData.school, message: formData.message,
+        name: formData.name,
+        email: formData.email,
+        school: formData.school,
+        message: formData.message,
       });
+
+      // 2️⃣  Send email via EmailJS
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          to_email:      ADMIN_EMAIL,
+          from_name:     formData.name,
+          from_email:    formData.email,
+          school:        formData.school,
+          message:       formData.message,
+          reply_to:      formData.email,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+
+      // 3️⃣  Open WhatsApp with pre-filled message
       const whatsappMsg = encodeURIComponent(
         `Hi, I'm ${formData.name} from ${formData.school}.\n\nEmail: ${formData.email}\n\nMessage: ${formData.message}`
       );
       window.open(`https://wa.me/${ADMIN_WHATSAPP}?text=${whatsappMsg}`, '_blank');
+
+      // 4️⃣  Show success state
       setSubmitted(true);
       setFormData({ name: '', email: '', school: '', message: '' });
       setTimeout(() => setSubmitted(false), 4000);
+
     } catch (err) {
       console.error('Submission error:', err);
+      setError('Something went wrong. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }
@@ -76,8 +114,8 @@ export default function Contact() {
               <div className="space-y-4 md:space-y-6">
                 {[
                   { icon: MapPin, label: 'Location', value: contact.location },
-                  { icon: Mail, label: 'Email', value: contact.email },
-                  { icon: Phone, label: 'Phone', value: contact.phone },
+                  { icon: Mail,   label: 'Email',    value: contact.email },
+                  { icon: Phone,  label: 'Phone',    value: contact.phone },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 md:gap-4">
                     <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gradient-to-br from-electric-blue/10 to-neon-purple/10 flex items-center justify-center border border-white/5 shrink-0">
@@ -124,8 +162,10 @@ export default function Contact() {
                   <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 200, delay: 0.1 }}>
                     <CheckCircle className="w-16 h-16 md:w-20 md:h-20 text-aurora-green mb-4 md:mb-6" />
                   </motion.div>
-                  <h3 className="text-section text-xl md:text-2xl text-white mb-2">Message Sent</h3>
-                  <p className="font-body text-sm md:text-base text-titanium">We'll be in touch within 24 hours.</p>
+                  <h3 className="text-section text-xl md:text-2xl text-white mb-2">Message Sent!</h3>
+                  <p className="font-body text-sm md:text-base text-titanium text-center px-4">
+                    We've received your message via email & WhatsApp.<br />We'll be in touch within 24 hours.
+                  </p>
                 </motion.div>
               )}
               
@@ -158,6 +198,11 @@ export default function Contact() {
                     className="w-full input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base text-white placeholder-titanium/30 resize-none"
                     placeholder="Tell us about your needs..." />
                 </div>
+
+                {/* Error message */}
+                {error && (
+                  <p className="text-red-400 text-sm font-body">{error}</p>
+                )}
                 
                 <button type="submit" disabled={isSubmitting}
                   className="w-full btn-premium py-4 md:py-5 rounded-lg md:rounded-xl text-white flex items-center justify-center gap-3 group disabled:opacity-50">
@@ -166,6 +211,10 @@ export default function Contact() {
                   </span>
                   {!isSubmitting && <ArrowRight className="w-4 h-4 md:w-5 md:h-5 relative z-10 group-hover:translate-x-1 transition-transform" />}
                 </button>
+
+                <p className="text-center text-titanium/40 text-xs font-body">
+                  Message sent via Email + WhatsApp
+                </p>
               </form>
             </div>
           </motion.div>
