@@ -15,6 +15,9 @@ const Testimonials = lazy(() => import('./components/Testimonials'));
 const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 const Admin = lazy(() => import('./pages/Admin'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
+const Cookies = lazy(() => import('./pages/Cookies'));
 const CustomCursor = lazy(() => import('./components/CustomCursor'));
 
 function MainSite() {
@@ -88,6 +91,9 @@ function App() {
       <Routes>
         <Route path="/" element={<MainSite />} />
         <Route path="/admin" element={<Suspense fallback={null}><Admin /></Suspense>} />
+        <Route path="/privacy" element={<Suspense fallback={null}><Privacy /></Suspense>} />
+        <Route path="/terms" element={<Suspense fallback={null}><Terms /></Suspense>} />
+        <Route path="/cookies" element={<Suspense fallback={null}><Cookies /></Suspense>} />
       </Routes>
     </BrowserRouter>
   );

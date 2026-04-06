@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Linkedin, Youtube, Github, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useStore } from '../lib/store';
 
 const XIcon = ({ className }: { className?: string }) => (
@@ -108,9 +109,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 md:pt-8 border-t border-white/5">
           <p className="font-body text-xs md:text-sm text-titanium/40">{company.copyright}</p>
           <div className="flex gap-6 md:gap-8">
-            {['Privacy', 'Terms', 'Cookies'].map((link) => (
-              <a key={link} href="#" className="font-body text-xs md:text-sm text-titanium/40 hover:text-titanium transition-colors">{link}</a>
-            ))}
+            <Link to="/privacy" className="font-body text-xs md:text-sm text-titanium/40 hover:text-titanium transition-colors">Privacy</Link>
+            <Link to="/terms" className="font-body text-xs md:text-sm text-titanium/40 hover:text-titanium transition-colors">Terms</Link>
+            <Link to="/cookies" className="font-body text-xs md:text-sm text-titanium/40 hover:text-titanium transition-colors">Cookies</Link>
           </div>
         </div>
       </div>
