@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 interface FloatingElement {
   id: number;
@@ -11,11 +12,15 @@ interface FloatingElement {
   type: 'circle' | 'ring' | 'dot';
 }
 
-export default function FloatingElements({ count = 20 }: { count?: number }) {
+export default memo(function FloatingElements({ count = 20 }: { count?: number }) {
   const [elements, setElements] = useState<FloatingElement[]>([]);
+  const isMobile = useIsMobile();
+  
+  // Reduce count on mobile for performance
+  const actualCount = isMobile ? Math.min(count, 6) : count;
 
   useEffect(() => {
-    const newElements: FloatingElement[] = Array.from({ length: count }, (_, i) => ({
+    const newElements: FloatingElement[] = Array.from({ length: actualCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
@@ -25,14 +30,14 @@ export default function FloatingElements({ count = 20 }: { count?: number }) {
       type: ['circle', 'ring', 'dot'][Math.floor(Math.random() * 3)] as 'circle' | 'ring' | 'dot',
     }));
     setElements(newElements);
-  }, [count]);
+  }, [actualCount]);
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {elements.map((el) => (
         <motion.div
           key={el.id}
-          className="absolute"
+          className="absolute will-change-transform"
           style={{
             left: `${el.x}%`,
             top: `${el.y}%`,
@@ -71,4 +76,4 @@ export default function FloatingElements({ count = 20 }: { count?: number }) {
       ))}
     </div>
   );
-}
+});

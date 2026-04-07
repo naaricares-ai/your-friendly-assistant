@@ -186,14 +186,14 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.6 }}
-            className="grid grid-cols-3 gap-4 sm:gap-8 mt-10 md:mt-16 pt-8 md:pt-10 border-t border-white/5"
+            className="grid grid-cols-3 gap-2 sm:gap-8 mt-10 md:mt-16 pt-8 md:pt-10 border-t border-white/5 overflow-hidden"
           >
             {hero.stats.map((stat, index) => (
-              <div key={index} className="text-center lg:text-left">
-                <div className="text-number text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1">
+              <div key={index} className="text-center lg:text-left min-w-0">
+                <div className="text-number text-xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-1 truncate">
                   {stat.value}
                 </div>
-                <div className="text-label text-[10px] sm:text-xs text-titanium/80">
+                <div className="text-label text-[8px] sm:text-xs text-titanium/80 truncate">
                   {stat.label}
                 </div>
               </div>
