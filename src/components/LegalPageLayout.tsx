@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import FloatingElements from './FloatingElements';
 
 const Footer = lazy(() => import('./Footer'));
+const CustomCursor = lazy(() => import('./CustomCursor'));
 
 interface LegalPageLayoutProps {
   title: string;
@@ -14,8 +15,16 @@ interface LegalPageLayoutProps {
 }
 
 export default function LegalPageLayout({ title, lastUpdated, children }: LegalPageLayoutProps) {
+  const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
+
   return (
     <div className="min-h-screen bg-deep-space text-chrome-silver relative overflow-hidden">
+      {/* Custom Cursor - desktop only */}
+      {!isTouchDevice && (
+        <Suspense fallback={null}>
+          <CustomCursor />
+        </Suspense>
+      )}
       {/* Background effects */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-electric-blue/5 rounded-full blur-[120px]" />
