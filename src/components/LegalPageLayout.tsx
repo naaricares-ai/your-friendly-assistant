@@ -1,4 +1,4 @@
-import { type ReactNode, Suspense, lazy } from 'react';
+import { type ReactNode, Suspense, lazy, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import FloatingElements from './FloatingElements';
 
 const Footer = lazy(() => import('./Footer'));
+const CustomCursor = lazy(() => import('./CustomCursor'));
 
 interface LegalPageLayoutProps {
   title: string;
