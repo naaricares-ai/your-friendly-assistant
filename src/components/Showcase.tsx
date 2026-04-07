@@ -1,4 +1,4 @@
-import { useRef, useState, lazy, Suspense } from 'react';
+import { useRef, useState, useEffect, lazy, Suspense } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Canvas3DErrorBoundary from './Canvas3DErrorBoundary';
 

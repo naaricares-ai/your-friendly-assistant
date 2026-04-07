@@ -1,4 +1,4 @@
-import { ReactNode, Suspense, lazy } from 'react';
+import { type ReactNode, Suspense, lazy } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
