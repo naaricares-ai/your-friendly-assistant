@@ -1,4 +1,4 @@
-import { useRef, useState, lazy, Suspense } from 'react';
+import { useRef, useState, useEffect, lazy, Suspense } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import Canvas3DErrorBoundary from './Canvas3DErrorBoundary';
 
@@ -29,7 +29,14 @@ export default function Showcase() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [activeIndex, setActiveIndex] = useState(0);
-  
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % showcaseItems.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="showcase" className="relative py-20 md:py-40 overflow-hidden">
