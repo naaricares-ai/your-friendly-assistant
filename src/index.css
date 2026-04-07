@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-deep-space: #0B0D17;
-  --color-void: #0E1120;
-  --color-obsidian: #141829;
+  --color-deep-space: #0D1117;
+  --color-void: #101820;
+  --color-obsidian: #161B22;
   --color-electric-blue: #00D4FF;
   --color-neon-purple: #7B61FF;
   --color-chrome-silver: #F0F0F5;
@@ -29,7 +29,7 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  background: #0B0D17;
+  background: #0D1117;
   color: #E8E8ED;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
