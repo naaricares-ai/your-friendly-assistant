@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Linkedin, Youtube, Github, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../lib/store';
+import NewsletterSubscribe from './NewsletterSubscribe';
 
 const XIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className || "w-4 h-4 md:w-5 md:h-5"}>
