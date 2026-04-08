@@ -71,7 +71,7 @@ export default function CustomCursor() {
     <>
       {/* Main cursor dot */}
       <motion.div
-        className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+        className="fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -84,8 +84,8 @@ export default function CustomCursor() {
           }}
           transition={{ type: 'spring', damping: 20, stiffness: 400 }}
         >
-          <div className={`w-4 h-4 rounded-full bg-white transition-all duration-300 ${
-            isHovering ? 'opacity-100' : 'opacity-80'
+          <div className={`w-5 h-5 rounded-full bg-electric-blue transition-all duration-300 shadow-[0_0_12px_rgba(0,212,255,0.6)] ${
+            isHovering ? 'opacity-100 shadow-[0_0_20px_rgba(0,212,255,0.8)]' : 'opacity-90'
           }`} />
           
           {/* Cursor text */}
@@ -117,7 +117,7 @@ export default function CustomCursor() {
           }}
           transition={{ type: 'spring', damping: 20, stiffness: 300 }}
         >
-          <div className="w-10 h-10 rounded-full border border-electric-blue/50" />
+          <div className="w-10 h-10 rounded-full border-2 border-electric-blue/60 shadow-[0_0_8px_rgba(0,212,255,0.3)]" />
         </motion.div>
       </motion.div>
     </>

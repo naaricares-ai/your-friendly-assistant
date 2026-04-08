@@ -7,7 +7,7 @@ export default function ScrollIndicator() {
   return (
     <motion.div
       style={{ opacity }}
-      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-4"
+      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 flex-col items-center gap-4 hidden md:flex"
     >
       <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-titanium/50">
         Scroll to explore
