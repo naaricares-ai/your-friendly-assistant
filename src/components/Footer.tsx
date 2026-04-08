@@ -90,22 +90,7 @@ export default function Footer() {
           ))}
         </div>
         
-        {/* Newsletter */}
-        <div className="glass-card-premium rounded-xl md:rounded-2xl p-5 md:p-8 mb-12 md:mb-20">
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-            <div>
-              <h3 className="text-section text-lg md:text-xl text-white mb-1 md:mb-2">Stay Updated</h3>
-              <p className="font-body text-sm md:text-base text-titanium/60">Get the latest on educational technology and AI.</p>
-            </div>
-            <form className="flex gap-3 md:gap-4">
-              <input type="email" placeholder="Enter your email"
-                className="flex-1 input-premium rounded-lg md:rounded-xl px-4 md:px-5 py-2.5 md:py-3 text-sm md:text-base text-white placeholder-titanium/30 min-w-0" />
-              <button type="submit" className="btn-premium px-5 md:px-8 py-2.5 md:py-3 rounded-lg md:rounded-xl text-white shrink-0">
-                <span className="relative z-10 font-body font-medium text-sm md:text-base">Subscribe</span>
-              </button>
-            </form>
-          </div>
-        </div>
+        <NewsletterSubscribe />
         
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 md:pt-8 border-t border-white/5">
           <p className="font-body text-xs md:text-sm text-titanium/40">{company.copyright}</p>
