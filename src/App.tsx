@@ -26,26 +26,15 @@ function MainSite() {
     typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
   );
 
+  // Handle hash-based scroll (including from legal page navigation)
   useEffect(() => {
-    const handleClick = (e: Event) => {
-      const target = e.currentTarget as HTMLAnchorElement;
-      const href = target.getAttribute('href');
-      if (href?.startsWith('#')) {
-        e.preventDefault();
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-      }
-    };
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', handleClick);
-    });
-
-    return () => {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', handleClick);
-      });
-    };
-  }, []);
+    if (!isLoading && window.location.hash) {
+      const id = window.location.hash.slice(1);
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 800);
+    }
+  }, [isLoading]);
 
   return (
     <>

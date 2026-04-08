@@ -1,17 +1,22 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Solutions', href: '#solutions' },
-  { name: 'Experience', href: '#showcase' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: 'home' },
+  { name: 'About', href: 'about' },
+  { name: 'Solutions', href: 'solutions' },
+  { name: 'Experience', href: 'showcase' },
+  { name: 'Contact', href: 'contact' },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isHome = location.pathname === '/';
+
   const { scrollY } = useScroll();
   const navBackground = useTransform(
     scrollY,
@@ -37,6 +42,15 @@ export default function Navbar() {
     }
   }, [isOpen]);
 
+  const handleNavClick = (sectionId: string) => {
+    setIsOpen(false);
+    if (isHome) {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate(`/#${sectionId}`);
+    }
+  };
+
   return (
     <>
       <motion.nav
@@ -48,16 +62,16 @@ export default function Navbar() {
         }}
         className="fixed top-0 left-0 right-0 z-50 border-b"
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
-            <motion.a
-              href="#home"
+            <motion.button
+              onClick={() => handleNavClick('home')}
               className="relative group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-hero text-2xl">
+              <span className="text-hero text-xl sm:text-2xl">
                 <span className="text-white">ORY</span>
                 <span className="gradient-text-clean">ZE</span>
               </span>
@@ -67,14 +81,14 @@ export default function Navbar() {
                 whileHover={{ width: '100%' }}
                 transition={{ duration: 0.3 }}
               />
-            </motion.a>
+            </motion.button>
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.button
                   key={link.name}
-                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -85,21 +99,21 @@ export default function Navbar() {
                     className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-electric-blue opacity-0 group-hover:opacity-100"
                     transition={{ duration: 0.2 }}
                   />
-                </motion.a>
+                </motion.button>
               ))}
             </div>
 
             {/* CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
-              <motion.a
-                href="#contact"
+              <motion.button
+                onClick={() => handleNavClick('contact')}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 }}
                 className="btn-premium px-6 py-2.5 rounded-full text-white relative z-10"
               >
                 <span className="relative z-10 font-body text-sm font-medium">Get Started</span>
-              </motion.a>
+              </motion.button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -124,7 +138,6 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 lg:hidden"
           >
-            {/* Backdrop */}
             <motion.div 
               className="absolute inset-0 bg-deep-space/95 backdrop-blur-xl"
               initial={{ opacity: 0 }}
@@ -132,7 +145,6 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
             />
             
-            {/* Content */}
             <motion.div 
               className="relative h-full flex flex-col items-center justify-center gap-8"
               initial={{ opacity: 0, y: 20 }}
@@ -141,10 +153,9 @@ export default function Navbar() {
               transition={{ delay: 0.1 }}
             >
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.button
                   key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => handleNavClick(link.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
@@ -152,18 +163,17 @@ export default function Navbar() {
                   className="text-section text-3xl text-white hover:text-electric-blue transition-colors"
                 >
                   {link.name}
-                </motion.a>
+                </motion.button>
               ))}
-              <motion.a
-                href="#contact"
-                onClick={() => setIsOpen(false)}
+              <motion.button
+                onClick={() => handleNavClick('contact')}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
                 className="btn-premium px-10 py-4 rounded-full text-white mt-8"
               >
                 <span className="relative z-10 font-body text-lg font-medium">Get Started</span>
-              </motion.a>
+              </motion.button>
             </motion.div>
           </motion.div>
         )}
