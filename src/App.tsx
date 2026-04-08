@@ -32,7 +32,7 @@ function MainSite() {
       const id = window.location.hash.slice(1);
       setTimeout(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
+      }, 800);
     }
   }, [isLoading]);
 
